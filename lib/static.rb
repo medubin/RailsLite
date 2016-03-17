@@ -9,13 +9,11 @@ class Static
   def call(env)
     req = Rack::Request.new(env)
     path = req.path
-
     if can_serve?(path)
       res = file_server.call(env)
     else
       res = app.call(env)
     end
-
     res
   end
 
